@@ -11,5 +11,17 @@ TemperatureSensor::TemperatureSensor(QObject *parent)
 
 float TemperatureSensor::getTemperature()
 {
-    return float(range_lower + std::rand() % range_delta) / 10;
+    int t = range_delta ? range_lower + std::rand() % range_delta : range_lower;
+    return float(t) / 10;
+}
+
+void TemperatureSensor::setLowerTemp(double value)
+{
+    range_lower = (int)(value * 10);
+    updateDelta();
+}
+void TemperatureSensor::setUpperTemp(double value)
+{
+    range_upper = (int)(value * 10);
+    updateDelta();
 }

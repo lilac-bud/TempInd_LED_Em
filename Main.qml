@@ -153,10 +153,12 @@ ApplicationWindow {
                 padding: 5
             }
             DoubleSpinBox{
+                id: lowerTemp
                 decimals: 1
                 stepSize: 0.1
-                to: 50
+                to: upperTemp.value
                 value: 20
+                editable: true
                 onValueChanged: tempSensor.setLowerTemp(value)
             }
             Text{
@@ -164,10 +166,13 @@ ApplicationWindow {
                 padding: 5
             }
             DoubleSpinBox{
+                id: upperTemp
                 decimals: 1
                 stepSize: 0.1
+                from: lowerTemp.value
                 to: 50
                 value: 35
+                editable: true
                 onValueChanged: tempSensor.setUpperTemp(value)
             }
         }
